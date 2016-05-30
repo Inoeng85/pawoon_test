@@ -29,6 +29,7 @@ $platforms = array(
 	'win95'				=> 'Windows 95',
 	'windows phone'			=> 'Windows Phone',
 	'windows'			=> 'Unknown Windows OS',
+        'CrOS'				=> 'Chrome OS',
 	'android'			=> 'Android',
 	'blackberry'		=> 'BlackBerry',
 	'iphone'			=> 'iOS',
@@ -87,7 +88,8 @@ $browsers = array(
 	'amaya'			=> 'Amaya',
 	'IBrowse'		=> 'IBrowse',
 	'Maxthon'		=> 'Maxthon',
-	'Ubuntu'		=> 'Ubuntu Web Browser'
+	'Ubuntu'		=> 'Ubuntu Web Browser',
+	'Vivaldi'		=> 'Vivaldi'
 );
 
 $mobiles = array(

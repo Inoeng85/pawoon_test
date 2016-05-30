@@ -75,17 +75,19 @@
 
     <div id="body">
 
-        <h2><a href="<?php echo site_url(); ?>">Home</a></h2>
-
         <p>
             Click on the links to check whether the REST server is working.
         </p>
 
         <ol>
             <li><a href="<?php echo site_url('api/example/users'); ?>">Users</a> - defaulting to JSON</li>
-            <li><a href="<?php echo site_url('api/example/users/id/1'); ?>">User #1</a> - defaulting to JSON  (users/id/1)</li>
-            <li><a href="<?php echo site_url('api/example/users/1'); ?>">User #1</a> - defaulting to JSON  (users/1)</li>
-		</ol>
+            <li><a href="<?php echo site_url('api/example/users/id/037a8f749f990fd51edd27f9bae8d36c:df'); ?>">User #1</a> - defaulting to JSON  (users/id/1)</li>
+            <li><a href="<?php echo site_url('api/example/users/037a8f749f990fd51edd27f9bae8d36c:df'); ?>">User #1</a> - defaulting to JSON  (users/1)</li>
+            <li><a id="ajax" href="<?php echo site_url('api/example/users/format/json'); ?>">Users</a> - get it in JSON (AJAX request)</li>
+            <li><a href="<?php echo site_url('api/example/users.html'); ?>">Users</a> - get it in HTML (users.html)</li>
+            <li><a href="<?php echo site_url('api/example/users/format/html'); ?>">Users</a> - get it in HTML (users/format/html)</li>
+            <li><a href="<?php echo site_url('api/example/users?format=html'); ?>">Users</a> - get it in HTML (users?format=html)</li>
+        </ol>
 
     </div>
 

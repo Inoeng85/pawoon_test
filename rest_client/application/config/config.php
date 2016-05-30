@@ -23,7 +23,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/codeigniter/pawoon/rest_client/';
+// Modified by Ivan Tcholakov, 01-NOV-2015.
+// A customized URL detector is used here.
+//$config['base_url'] = '';
+$_helper_dir = APPPATH.'helpers/';
+require_once $_helper_dir.'resolve_path.php';
+require_once $_helper_dir.'merge_paths.php';
+require_once $_helper_dir.'detect_https.php';
+require_once $_helper_dir.'detect_host.php';
+require_once $_helper_dir.'detect_url.php';
+$_detect_url = detect_url();
+$config['base_url'] = $_detect_url['base_url'];
+//
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +46,7 @@ $config['base_url'] = 'http://localhost/codeigniter/pawoon/rest_client/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -100,7 +111,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,7 +147,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = is_php('5.3.2') ? APPPATH.'vendor/'.(is_php('5.5') ? 'autoload.php' : 'my_autoload.php') : FALSE;
 
 /*
 |--------------------------------------------------------------------------

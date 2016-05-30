@@ -74,12 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
+	'dsn'	   => 'mysql:host=localhost;dbname=pawoon_test',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'admin',
-	'database' => 'ci_bootstrap',
-	'dbdriver' => 'mysqli',
+	'database' => 'pawoon_test',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

@@ -56,7 +56,7 @@ class Format {
      *
      * @var object
      */
-    private $_ci;
+    private $_CI;
 
     /**
      * Data to parse
@@ -83,21 +83,21 @@ class Format {
     public function __construct($data = NULL, $from_type = NULL)
     {
         // Get the CodeIgniter reference
-        $this->_ci = &get_instance();
+        $this->_CI = &get_instance();
 
         // Load the inflector helper
-        $this->_ci->load->helper('inflector');
+        $this->_CI->load->helper('inflector');
 
         // If the provided data is already formatted we should probably convert it to an array
         if ($from_type !== NULL)
         {
-            if (method_exists($this, '_from_' . $from_type))
+            if (method_exists($this, '_from_'.$from_type))
             {
-                $data = call_user_func([$this, '_from_' . $from_type], $data);
+                $data = call_user_func([$this, '_from_'.$from_type], $data);
             }
             else
             {
-                throw new Exception('Format class does not support conversion from "' . $from_type . '".');
+                throw new Exception('Format class does not support conversion from "'.$from_type.'".');
             }
         }
 
@@ -176,12 +176,6 @@ class Format {
         if ($data === NULL && func_num_args() === 0)
         {
             $data = $this->_data;
-        }
-
-        // turn off compatibility mode as simple xml throws a wobbly if you don't.
-        if (ini_get('zend.ze1_compatibility_mode') == 1)
-        {
-            ini_set('zend.ze1_compatibility_mode', 0);
         }
 
         if ($structure === NULL)
@@ -283,20 +277,20 @@ class Format {
         }
 
         // Load the table library
-        $this->_ci->load->library('table');
+        $this->_CI->load->library('table');
 
-        $this->_ci->table->set_heading($headings);
+        $this->_CI->table->set_heading($headings);
 
         foreach ($data as $row)
         {
-            // Suppressing the "array to string conversion" notice.
-            // Keep the "evil" @ here.
-            $row = @ array_map('strval', $row);
+            // Suppressing the "array to string conversion" notice
+            // Keep the "evil" @ here
+            $row = @array_map('strval', $row);
 
-            $this->_ci->table->add_row($row);
+            $this->_CI->table->add_row($row);
         }
 
-        return $this->_ci->table->generate();
+        return $this->_CI->table->generate();
     }
 
     /**
@@ -405,7 +399,7 @@ class Format {
         }
 
         // Get the callback parameter (if set)
-        $callback = $this->_ci->input->get('callback');
+        $callback = $this->_CI->input->get('callback');
 
         if (empty($callback) === TRUE)
         {
@@ -416,12 +410,12 @@ class Format {
         elseif (preg_match('/^[a-z_\$][a-z0-9\$_]*(\.[a-z_\$][a-z0-9\$_]*)*$/i', $callback))
         {
             // Return the data as encoded json with a callback
-            return $callback . '(' . json_encode($data) . ');';
+            return $callback.'('.json_encode($data).');';
         }
 
         // An invalid jsonp callback function provided.
         // Though I don't believe this should be hardcoded here
-        $data['warning'] = 'INVALID JSONP CALLBACK: ' . $callback;
+        $data['warning'] = 'INVALID JSONP CALLBACK: '.$callback;
 
         return json_encode($data);
     }

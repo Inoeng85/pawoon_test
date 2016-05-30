@@ -5,6 +5,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
 //require APPPATH . '/libraries/MY_Controller.php';
 
+/**
+ * This is an example of a few basic user interaction methods you could use
+ * all done with a hardcoded array
+ *
+ * @package         CodeIgniter
+ * @subpackage      Rest Server
+ * @category        Controller
+ * @author          Phil Sturgeon, Chris Kacerguis
+ * @license         MIT
+ * @link            https://github.com/chriskacerguis/codeigniter-restserver
+ */
 class Example extends MY_Controller {
 
     function __construct()
@@ -21,21 +32,19 @@ class Example extends MY_Controller {
 
     public function users_get()
     {
-		//load Model Rest
-		//$this->load->model('rest_model'); 
-		
         // Users from a data store e.g. database
-         $users = [
-            ['uuid' => 1, 'nama' => 'Ibnu', 'alamat' => 'Tambora'],
-            ['uuid' => 2, 'nama' => 'Hajar', 'alamat' => 'Kelapa gading'],
-            ['uuid' => 3, 'nama' => 'Inoeng', 'alamat' => 'Slipi'],
-        ];
+/*         $users = [
+            ['id' => 1, 'name' => 'John', 'email' => 'john@example.com', 'fact' => 'Loves coding'],
+            ['id' => 2, 'name' => 'Jim', 'email' => 'jim@example.com', 'fact' => 'Developed on CodeIgniter'],
+            ['id' => 3, 'name' => 'Jane', 'email' => 'jane@example.com', 'fact' => 'Lives in the USA', ['hobbies' => ['guitar', 'cycling']]],
+        ]; */
 		
-		//$users = $this->rest_model->get_users();	
-
-		//var_dump($users);exit;
+		$this->load->model('users_model');
+		
+		$users = $this->users_model->get_users();
 
         $id = $this->get('id');
+		//var_dump($id);exit;
 
         // If the id parameter doesn't exist return all the users
 
@@ -59,7 +68,7 @@ class Example extends MY_Controller {
 
         // Find and return a single record for a particular user.
 
-        $id = (int) $id;
+        //$id = (int) $id;
 
         // Validate the id.
         if ($id <= 0)
@@ -77,7 +86,7 @@ class Example extends MY_Controller {
         {
             foreach ($users as $key => $value)
             {
-                if (isset($value['id']) && $value['id'] === $id)
+                if (isset($value['uuid']) && $value['uuid'] === $id)
                 {
                     $user = $value;
                 }
