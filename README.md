@@ -13,8 +13,9 @@ nama: unique, text
 alamat: text
 Create a RESTful service with JSON to interface with scope 2: Front-End
 
-Explaination:
-http://localhost/codeigniter/pawoon/rest_server/index.php/rest-server
+Explanation:
+
+http://localhost/codeigniter/pawoon/rest_server/
 this is an application for Web REST backend API
 
 
@@ -25,6 +26,14 @@ All requests to be made with AJAX
 ID is a unique Hash auto generated (non-editable)
 Display alert to the user if the name is already used
 Single Page Form + content as follow:
+
+Explanation:
+
+http://localhost/codeigniter/pawoon/rest_client/
+this is an application for Web REST client API as UI request
+
+Database dump:
+folder : schema/mysql/pawoon_test.sql (PDO ext)
 
 
 A fully RESTful server implementation for CodeIgniter using one library, one
